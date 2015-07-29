@@ -54,6 +54,7 @@ window.onload = function(){
 	  else if (player.waterSupply >= 20){
 		  player.frame = 28;
 		  confirm("Sorry, " + player.name + ". " + "You died!");
+		  player.frame = 28;
 		  clearInterval(waterLevelLoss);
 		  game.stop();
 	  }
