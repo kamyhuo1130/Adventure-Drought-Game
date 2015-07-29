@@ -3,7 +3,7 @@ var maxWaterLevel = 20;
 var time = 120;
 var timeSinceLastAlert = 0;
 var timeToNewAlert = 20;
-var alertArray = ["Africa's economy has fallen!", "100 million people have died!", "Tornadoes destroy remaining water lines!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
+var alertArray = ["Africa's economy collapses!", "100m people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
 var i = 0;
 updateTime = function(){
 	time = time - 1;
@@ -41,12 +41,26 @@ window.onload = function(){
 	map.collisionData = collisionData;
 	
   };
-  var alert = function(){
+  var alertLabel = new Label("");
+  var setAlertLabel = function(){
+	  alertLabel.x = game.availWidth;
+	  alertLabel.y = game.availHeight;
+	  alertLabel.font = "8px arial";
+	  alertLabel.textAlign = "right";
+	  alertLabel.color = '#FFFFFF';
+  };
+  var alerting = function(){
+	  alertLabel.x = game.availWidth;
+	  alertLabel.y = game.availHeight;
+	  alertLabel.textAlign = "right";
 	  if(timeSinceLastAlert >= timeToNewAlert){
-		  confirm(alertArray[i]);
+		  alertLabel.text = alertArray[i];
 		  i += 1;
 		  timeSinceLastAlert = 0;
 	  }
+	   if(timeSinceLastAlert === 1){
+			  alertLabel.text = "";
+		  }
   };
   var waterLoss = function(){
 	  if(player.waterSupply < 20){
@@ -70,6 +84,7 @@ window.onload = function(){
 	stage.addChild(puddleMap);
 	stage.addChild(label);
 	stage.addChild(timerLabel);
+	stage.addChild(alertLabel);
     game.rootScene.addChild(stage);
   };
   confirm("Directions: The world is in a drought! Find your way out of the maze without running out of water. \nCollect water at the puddles before the timer runs out. The world depends on you. Good luck!");
@@ -94,7 +109,7 @@ window.onload = function(){
 	  timerLabel.x = game.availWidth/2;
 	  timerLabel.y = game.availHeight/2;
 	  timerLabel.font = "16px arial";
-	  timerLabel.textAlign = "right";
+	  timerLabel.textAlign = "left";
 	  timerLabel.color = '#FFFFFF';
   };
   timerLabel.move = function(){
@@ -198,11 +213,12 @@ window.onload = function(){
 	setWaterLevel();
 	setLabel();
 	setTimerLabel();
+	setAlertLabel();
     player.on('enterframe', function() {
       player.move();
 	  checkPuddle();
 	  waterLevel.move();
-	  alert();
+	  alerting();
 	  label.move();
 	  timerLabel.move();
     });
