@@ -26,9 +26,10 @@ window.onload = function(){
     map.loadData(mapData);
     foregroundMap.image = game.assets['sprites.png'];
     foregroundMap.loadData(foregroundData);
-	puddleMap.image = game.assets['sprites.png'];
 	puddleMap.loadData(puddle);
+	puddleMap.image = game.assets['sprites.png'];
     var collisionData = [];
+
     for(var i = 0; i< foregroundData.length; i++){
       collisionData.push([]);
       for(var j = 0; j< foregroundData[0].length; j++){
@@ -36,7 +37,8 @@ window.onload = function(){
         collisionData[i][j] = collision;
       }
     }
-    map.collisionData = collisionData;
+	map.collisionData = collisionData;
+	
   };
   var alert = function(){
 	  if(timeSinceLastAlert >= timeToNewAlert){
@@ -86,6 +88,7 @@ window.onload = function(){
   };
   var player = new Sprite(game.spriteWidth, game.spriteHeight);
   var setPlayer = function(){
+	player.name = name;
     player.spriteOffset = 2;
     player.startingX = 0;
     player.startingY = 20;
@@ -98,10 +101,14 @@ window.onload = function(){
     player.image.draw(game.assets['sprites.png']);
     player.name = name;
 	player.waterSupply = maxWaterLevel/2;
-	player.nameLabel = new Label(name);
+	player.nameLabel = new Label("HELLO");
 	player.nameLabel.x = waterLevel.x;
 	player.nameLabel.y = waterLevel.y - 20;
 	player.nameLabel.color = 'black';
+  };
+  
+  player.displayStatus = function () {
+	  player.nameLabel.text =("HELLO");
   };
   player.move = function(){
     this.frame = this.spriteOffset + this.direction * 2 + this.walk;
@@ -140,6 +147,20 @@ window.onload = function(){
       }
     }
   };
+  var checkPuddle = function(){
+	  if (puddleMap.checkTile(this.x, this.y) === 6){
+		for(var k = 0; k< puddle.length; k++){
+      collisionData.push([]);
+      for(var l = 0; l< puddle[0].length; l++){
+        collision = puddle[k][l] === 6 ? 6 : 0;
+        collisionData[k][l] = collision;
+      }
+    }
+	map.collisionData = collisionData;
+	  }
+  };
+  
+  
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
@@ -157,6 +178,7 @@ window.onload = function(){
     setPlayer();
     setStage();
 	setWaterLevel();
+	checkPuddle();
     player.on('enterframe', function() {
       player.move();
 	  waterLevel.move();
