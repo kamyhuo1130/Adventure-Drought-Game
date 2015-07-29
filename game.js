@@ -12,7 +12,7 @@ updateTime = function(){
 window.setInterval(updateTime, 1000);
 window.onload = function(){
   var game = new Game(300, 300);
-  game.spriteSheetWidth = 700;
+  game.spriteSheetWidth = 750;
   game.spriteSheetHeight = 24;
   game.fps = 15;
   game.spriteWidth = 24;
@@ -51,8 +51,8 @@ window.onload = function(){
 		  player.waterSupply = player.waterSupply + 1;
 	  }
 	  else if (player.waterSupply >= 20){
+		    player.frame = 28;
 		  confirm("You died!");
-		  player.frame = 28;
 		  clearInterval(waterLevelLoss);
 		  game.stop();
 	  }
@@ -70,7 +70,6 @@ window.onload = function(){
   };
   confirm("Directions: The world is in a drought! Find your way out of the maze without running out of water. \nCollect water at the puddles before the timer runs out. The world depends on you. Good luck!");
   var name = prompt("What is your name?");
-  
   var waterLevel = new Sprite(game.spriteWidth, game.spriteHeight);
   var setWaterLevel = function(){
 	  waterLevel.spriteOffset = 7;
