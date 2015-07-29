@@ -67,6 +67,7 @@ window.onload = function(){
     stage.addChild(foregroundMap);
 	stage.addChild(puddleMap);
 	stage.addChild(label);
+	stage.addChild(timerLabel);
     game.rootScene.addChild(stage);
   };
   confirm("Directions: The world is in a drought! Find your way out of the maze without running out of water. \nCollect water at the puddles before the timer runs out. The world depends on you. Good luck!");
@@ -86,15 +87,32 @@ window.onload = function(){
 	  waterLevel.y = player.y - 20;
 	  waterLevel.frame = waterLevel.spriteOffset + player.waterSupply;
   };
+  var timerLabel = new Label("Time: " + time);
+  var setTimerLabel = function(){
+	  timerLabel.x = game.availWidth/2;
+	  timerLabel.y = game.availHeight/2;
+	  timerLabel.font = "16px cursive";
+	  timerLabel.textAlign = "right";
+	  timerLabel.color = '#FFFFFF';
+  };
+  timerLabel.move = function(){
+	  timerLabel.x = game.availWidth/2;
+	  timerLabel.y = game.availHeight/2;
+	  this.text = "Time: " + time;
+	  timerLabel.textAlign = "left";
+  };
   var label = new Label(name);
   var setLabel = function(){
-	  label.x = player.x; 
-	  label.y = player.y + 20;
-	  label.font = "8px cursive";
+	  label.x = game.availWidth/2;
+	  label.y = game.availHeight/2;
+	  label.color = '#FFFFFF';
+	  label.textAlign = "center";
+	  label.font = "16px cursive";
   };
   label.move = function(){
-	  label.x = player.x;
-	  label.y = player.y + 20;
+	  label.x = game.availWidth/2;
+	  label.y = game.availHeight/2;
+	 label.textAlign = "center";
   };
   var player = new Sprite(game.spriteWidth, game.spriteHeight);
   var setPlayer = function(){
@@ -184,12 +202,15 @@ window.onload = function(){
     setStage();
 	setWaterLevel();
 	setLabel();
+	setTimerLabel();
     player.on('enterframe', function() {
       player.move();
 	  waterLevel.move();
 	  alert();
 	  label.move();
 	  checkPuddle();
+	  timerLabel.move();
+
     });
     game.rootScene.on('enterframe', function(e) {
       game.focusViewport();
