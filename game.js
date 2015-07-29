@@ -12,7 +12,7 @@ updateTime = function(){
 window.setInterval(updateTime, 1000);
 window.onload = function(){
   var game = new Game(300, 300);
-  game.spriteSheetWidth = 672;
+  game.spriteSheetWidth = 700;
   game.spriteSheetHeight = 24;
   game.fps = 15;
   game.spriteWidth = 24;
@@ -52,6 +52,7 @@ window.onload = function(){
 	  }
 	  else if (player.waterSupply >= 20){
 		  confirm("You died!");
+		  player.frame = 28;
 		  clearInterval(waterLevelLoss);
 		  game.stop();
 	  }
@@ -147,8 +148,6 @@ window.onload = function(){
   game.timer = function(){
 	var timer = 3;
 	timer.setInterval(game.timer, 1000);
-
-	  
   }
   game.onload = function(){
     setMaps();
