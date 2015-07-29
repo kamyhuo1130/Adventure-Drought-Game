@@ -171,9 +171,10 @@ window.onload = function(){
 	}
   };
   var checkPuddle = function(){
-	
+
 	 if (puddleMap.checkTile(player.x, player.y) === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
+
 	}
 	 
   };  
