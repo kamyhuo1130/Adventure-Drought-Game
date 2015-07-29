@@ -183,7 +183,7 @@ window.onload = function(){
 	 
   };
   
-  
+ 
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
