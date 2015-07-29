@@ -202,9 +202,14 @@ window.onload = function(){
 		disappear((player.x / 24 | 0), (player.y / 24 | 0));
 		 
 	}
-	 
-
-  };  
+  }; 
+var checkCity = function(){
+	var position = puddleMap.checkTile(player.x, player.y);
+	if(position === 29){
+		confirm("You win!");
+		game.stop();
+	}
+};
 
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
@@ -231,6 +236,7 @@ window.onload = function(){
 	  checkPuddle();
 	  waterLevel.move();
 	  alerting();
+	  checkCity();
 	  label.move();
 	  timerLabel.move();
     });
