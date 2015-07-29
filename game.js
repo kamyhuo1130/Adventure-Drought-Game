@@ -1,6 +1,6 @@
 enchant();
 var maxWaterLevel = 20;
-var time = 120;
+var time = 100;
 var timeSinceLastAlert = 0;
 var timeToNewAlert = 20;
 var alertArray = ["Africa's economy has fallen!", "100 million people have died!", "Tornadoes destroy remaining water lines!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
@@ -102,6 +102,12 @@ window.onload = function(){
 	  timerLabel.y = game.availHeight/2;
 	  this.text = "Time: " + time;
 	  timerLabel.textAlign = "left";
+	  if (time <= 0){
+		  player.frame = 28;
+		  confirm("Sorry, " + player.name + ". " + "You died!");
+		  player.frame = 28;
+		  game.stop();
+	  }
   };
   var label = new Label(name);
   var setLabel = function(){
