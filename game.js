@@ -191,16 +191,16 @@ window.onload = function(){
      }
 	}
   };
+			   
   var disappear = function(a, b) {
-	  puddle[a][b] = 0;
+	  puddle[a][b] = -1;
   };
+  
   var checkPuddle = function(){
 	 var position = puddleMap.checkTile(player.x, player.y);
 	 if (position === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
-
-		disappear((player.x / 24 | 0), (player.y / 24 | 0));
-		 
+		 puddle[player.x / 24 | 0][player.y / 24 | 0]; 
 	}
   }; 
 var checkCity = function(){
