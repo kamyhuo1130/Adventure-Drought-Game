@@ -18,7 +18,6 @@ window.onload = function(){
   game.spriteWidth = 24;
   game.spriteHeight = 24;
   game.preload('sprites.png');
-  game.preload('water.png');
   var map = new Map(game.spriteWidth, game.spriteHeight);
   var foregroundMap = new Map(game.spriteWidth, game.spriteHeight);
   var puddleMap = new Map(game.spriteWidth, game.spriteHeight);
