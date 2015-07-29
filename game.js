@@ -3,7 +3,7 @@ var maxWaterLevel = 20;
 var time = 100;
 var timeSinceLastAlert = 0;
 var timeToNewAlert = 20;
-var alertArray = ["Africa's economy collapses!", "100m people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
+var alertArray = ["Africa's economy collapses!", "100k people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
 var i = 0;
 updateTime = function(){
 	time = time - 1;
@@ -202,8 +202,7 @@ window.onload = function(){
 		disappear((player.x / 24 | 0), (player.y / 24 | 0));
 		 
 	}
-	 
-
+	
   };  
 
   game.focusViewport = function(){
