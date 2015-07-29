@@ -66,6 +66,7 @@ window.onload = function(){
 	stage.addChild(waterLevel);
     stage.addChild(foregroundMap);
 	stage.addChild(puddleMap);
+	stage.addChild(label);
     game.rootScene.addChild(stage);
   };
   confirm("Directions: The world is in a drought! Find your way out of the maze without running out of water. \nCollect water at the puddles before the timer runs out. The world depends on you. Good luck!");
@@ -84,6 +85,16 @@ window.onload = function(){
 	  waterLevel.x = player.x + 1;
 	  waterLevel.y = player.y - 20;
 	  waterLevel.frame = waterLevel.spriteOffset + player.waterSupply;
+  };
+  var label = new Label(name);
+  var setLabel = function(){
+	  label.x = player.x; 
+	  label.y = player.y + 20;
+	  label.font = "8px cursive";
+  };
+  label.move = function(){
+	  label.x = player.x;
+	  label.y = player.y + 20;
   };
   var player = new Sprite(game.spriteWidth, game.spriteHeight);
   var setPlayer = function(){
@@ -170,10 +181,12 @@ window.onload = function(){
     setStage();
 	setWaterLevel();
 	checkPuddle();
+	setLabel();
     player.on('enterframe', function() {
       player.move();
 	  waterLevel.move();
 	  alert();
+	  label.move();
     });
     game.rootScene.on('enterframe', function(e) {
       game.focusViewport();
