@@ -55,10 +55,10 @@ window.onload = function(){
 	  alertLabel.textAlign = "right";
 	  if(timeSinceLastAlert >= timeToNewAlert){
 		  alertLabel.text = alertArray[i];
-		  i += 1;
+		  i = i + 1;
 		  timeSinceLastAlert = 0;
 	  }
-	   if(timeSinceLastAlert === 1){
+	   if(timeSinceLastAlert === 2){
 			  alertLabel.text = "";
 		  }
   };
