@@ -1,6 +1,6 @@
 enchant();
 var maxWaterLevel = 20;
-var time = 120;
+var time = 100;
 var timeSinceLastAlert = 0;
 var timeToNewAlert = 20;
 var alertArray = ["Africa's economy collapses!", "100m people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
@@ -117,6 +117,12 @@ window.onload = function(){
 	  timerLabel.y = game.availHeight/2;
 	  this.text = "Time: " + time;
 	  timerLabel.textAlign = "left";
+	  if (time <= 0){
+		  player.frame = 28;
+		  confirm("Sorry, " + player.name + ". " + "You died!");
+		  player.frame = 28;
+		  game.stop();
+	  }
   };
   var label = new Label(name);
   var setLabel = function(){
@@ -182,18 +188,26 @@ window.onload = function(){
           this.move();
         
       }
-    }
+     }
 	}
   };
+  var disappear = function(a, b) {
+	  puddle[a][b] = -1;
+  };
   var checkPuddle = function(){
-
-	 if (puddleMap.checkTile(player.x, player.y) === 6 && player.waterSupply > 0){
+	 var position = puddleMap.checkTile(player.x, player.y);
+	 if (position === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
 
+		 
 	}
 	 
+
+		 disappear((player.x / 24 | 0), (player.y / 24 | 0));
+	} 
+
   };  
- 
+
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
