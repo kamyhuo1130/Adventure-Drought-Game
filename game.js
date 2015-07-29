@@ -18,6 +18,7 @@ window.onload = function(){
   game.spriteWidth = 24;
   game.spriteHeight = 24;
   game.preload('sprites.png');
+  var player = new Sprite(game.spriteWidth, game.spriteHeight);
   var map = new Map(game.spriteWidth, game.spriteHeight);
   var foregroundMap = new Map(game.spriteWidth, game.spriteHeight);
   var puddleMap = new Map(game.spriteWidth, game.spriteHeight);
@@ -114,7 +115,7 @@ window.onload = function(){
 	  label.y = game.availHeight/2;
 	 label.textAlign = "center";
   };
-  var player = new Sprite(game.spriteWidth, game.spriteHeight);
+ 
   var setPlayer = function(){
 	player.name = name;
     player.spriteOffset = 2;
@@ -169,17 +170,25 @@ window.onload = function(){
   };
   var checkPuddle = function(){
 	 
-	 if (puddleMap.checkTile(player.x, player.y) === 6){
+	 for(var k = 0; k< puddle.length; k++){
+		 for(var l = 0; l< puddle[0].length; l++){
+			 if (puddleMap.checkTile(k, l) === 6) {
+				 alert ("PUDDLE");
+			 }
+		 }
+	 }
+	 
+	 /*if (puddleMap.checkTile(player.x, player.y) === 6){
 		alert ("PUDDLE");
-		/*for(var k = 0; k< puddle.length; k++){
+		for(var k = 0; k< puddle.length; k++){
 			collisionData.push([]);
 			for(var l = 0; l< puddle[0].length; l++){
 				collision = puddle[k][l] === 6 ? -1 : 0;
 				collisionData[k][l] = collision;
 			}
 		}
-	map.collisionData = collisionData;*/
-	}
+	map.collisionData = collisionData;
+	}*/
 	 
   };
   
