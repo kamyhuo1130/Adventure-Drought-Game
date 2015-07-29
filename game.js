@@ -177,7 +177,7 @@ window.onload = function(){
 	}
   };
   var disappear = function(a, b) {
-	  puddle[a][b] = -1;
+	  puddle[a][b] = 0;
   };
   var checkPuddle = function(){
 	 var position = puddleMap.checkTile(player.x, player.y);
