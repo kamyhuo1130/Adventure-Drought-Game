@@ -150,16 +150,19 @@ window.onload = function(){
     }
   };
   var checkPuddle = function(){
-	  if (puddleMap.checkTile(this.x, this.y) === 6){
-		for(var k = 0; k< puddle.length; k++){
-      collisionData.push([]);
-      for(var l = 0; l< puddle[0].length; l++){
-        collision = puddle[k][l] === 6 ? 6 : 0;
-        collisionData[k][l] = collision;
-      }
-    }
-	map.collisionData = collisionData;
-	  }
+	 
+	 if (puddleMap.checkTile(player.x, player.y) === 6){
+		alert ("PUDDLE");
+		/*for(var k = 0; k< puddle.length; k++){
+			collisionData.push([]);
+			for(var l = 0; l< puddle[0].length; l++){
+				collision = puddle[k][l] === 6 ? -1 : 0;
+				collisionData[k][l] = collision;
+			}
+		}
+	map.collisionData = collisionData;*/
+	}
+	 
   };
   
   
@@ -180,13 +183,13 @@ window.onload = function(){
     setPlayer();
     setStage();
 	setWaterLevel();
-	checkPuddle();
 	setLabel();
     player.on('enterframe', function() {
       player.move();
 	  waterLevel.move();
 	  alert();
 	  label.move();
+	  checkPuddle();
     });
     game.rootScene.on('enterframe', function(e) {
       game.focusViewport();
