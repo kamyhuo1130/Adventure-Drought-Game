@@ -87,6 +87,7 @@ window.onload = function(){
   };
   var player = new Sprite(game.spriteWidth, game.spriteHeight);
   var setPlayer = function(){
+	player.name = name;
     player.spriteOffset = 2;
     player.startingX = 0;
     player.startingY = 20;
@@ -99,10 +100,14 @@ window.onload = function(){
     player.image.draw(game.assets['sprites.png']);
     player.name = name;
 	player.waterSupply = maxWaterLevel/2;
-	player.nameLabel = new Label(name);
+	player.nameLabel = new Label("HELLO");
 	player.nameLabel.x = waterLevel.x;
 	player.nameLabel.y = waterLevel.y - 20;
 	player.nameLabel.color = 'black';
+  };
+  
+  player.displayStatus = function () {
+	  player.nameLabel.text =("HELLO");
   };
   player.move = function(){
     this.frame = this.spriteOffset + this.direction * 2 + this.walk;
