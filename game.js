@@ -165,25 +165,18 @@ window.onload = function(){
       if (0 <= x && x < map.width && 0 <= y && y < map.height && !map.hitTest(x, y)) {
           this.isMoving = true;
           this.move();
-        }
+        
       }
     }
+	}
   };
   var checkPuddle = function(){
 	 
-	 if (puddleMap.checkTile(player.x, player.y) === 6){
+	 if (puddleMap.checkTile(player.x, player.y) === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
-		 console.log("IT WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		for(var k = 0; k< puddle.length; k++){
-			for(var l = 0; l< puddle[k].length; l++){
-				puddle[k][l] = -1;
-			}
-		}
 	}
 	 
-  };
-  window.setInterval(checkPuddle, 100);
-  
+  };  
  
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
@@ -206,10 +199,10 @@ window.onload = function(){
 	setTimerLabel();
     player.on('enterframe', function() {
       player.move();
+	  checkPuddle();
 	  waterLevel.move();
 	  alert();
 	  label.move();
-	  //checkPuddle();
 	  timerLabel.move();
     });
     game.rootScene.on('enterframe', function(e) {
