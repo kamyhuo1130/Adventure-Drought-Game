@@ -173,18 +173,26 @@ window.onload = function(){
           this.move();
         
       }
-    }
+     }
 	}
   };
+  var disappear = function(a, b) {
+	  puddle[a][b] = -1;
+  };
   var checkPuddle = function(){
-
-	 if (puddleMap.checkTile(player.x, player.y) === 6 && player.waterSupply > 0){
+	 var position = puddleMap.checkTile(player.x, player.y);
+	 if (position === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
+
 		 
 	}
 	 
+
+		 disappear((player.x / 24 | 0), (player.y / 24 | 0));
+	} 
+
   };  
- 
+
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
