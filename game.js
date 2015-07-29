@@ -92,7 +92,7 @@ window.onload = function(){
   var setTimerLabel = function(){
 	  timerLabel.x = game.availWidth/2;
 	  timerLabel.y = game.availHeight/2;
-	  timerLabel.font = "16px cursive";
+	  timerLabel.font = "16px arial";
 	  timerLabel.textAlign = "right";
 	  timerLabel.color = '#FFFFFF';
   };
@@ -108,7 +108,7 @@ window.onload = function(){
 	  label.y = game.availHeight/2;
 	  label.color = '#FFFFFF';
 	  label.textAlign = "center";
-	  label.font = "16px cursive";
+	  label.font = "16px arial";
   };
   label.move = function(){
 	  label.x = game.availWidth/2;
