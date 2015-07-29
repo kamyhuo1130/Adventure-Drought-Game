@@ -55,6 +55,7 @@ window.onload = function(){
 	  else if (player.waterSupply >= 20){
 		  player.frame = 28;
 		  confirm("Sorry, " + player.name + ". " + "You died!");
+		  player.frame = 28;
 		  clearInterval(waterLevelLoss);
 		  game.stop();
 	  }
@@ -92,7 +93,7 @@ window.onload = function(){
   var setTimerLabel = function(){
 	  timerLabel.x = game.availWidth/2;
 	  timerLabel.y = game.availHeight/2;
-	  timerLabel.font = "16px cursive";
+	  timerLabel.font = "16px arial";
 	  timerLabel.textAlign = "right";
 	  timerLabel.color = '#FFFFFF';
   };
@@ -108,7 +109,7 @@ window.onload = function(){
 	  label.y = game.availHeight/2;
 	  label.color = '#FFFFFF';
 	  label.textAlign = "center";
-	  label.font = "16px cursive";
+	  label.font = "16px arial";
   };
   label.move = function(){
 	  label.x = game.availWidth/2;
@@ -192,7 +193,7 @@ window.onload = function(){
 	 
   };
   
-  
+ 
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
