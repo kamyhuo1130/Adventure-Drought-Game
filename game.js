@@ -172,13 +172,13 @@ window.onload = function(){
   var checkPuddle = function(){
 	 
 	 if (puddleMap.checkTile(player.x, player.y) === 6){
-		 player.waterSupply = player.waterSupply - 1;
+		 player.waterSupply = waterLevel.spriteOffset;
 		 console.log("IT WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		for(var k = 0; k< puddle.length; k++){
-			for(var l = 0; l< puddle[k].length; l++){
-				puddle[k][l] = -1;
-			}
-		}
+		var k = player.x / 24 | 0;
+		var l = player.y / 24 | 0;
+		puddle[k][l] = -1;
+			
+		
 	}
 	 
   };
