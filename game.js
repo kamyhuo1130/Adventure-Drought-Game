@@ -11,7 +11,7 @@ updateTime = function(){
 	timeSinceLastAlert = timeSinceLastAlert + 1;
 };
 setOpening = function(){
-	window.foregroundData[randomOpen][29] = -1;
+	window.foregroundData[randomOpen][38] = -1;
 };
 window.setInterval(updateTime, 1000);
 window.onload = function(){
