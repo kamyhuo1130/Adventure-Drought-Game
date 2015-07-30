@@ -28,7 +28,7 @@ setRandomMap = function() {
 window.setInterval(updateTime, 1000);
 window.onload = function(){
   var game = new Game(300, 300);
-  game.spriteSheetWidth = 775;
+  game.spriteSheetWidth = 850;
   game.spriteSheetHeight = 24;
   game.fps = 15;
   game.spriteWidth = 24;
