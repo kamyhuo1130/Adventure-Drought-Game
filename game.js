@@ -191,19 +191,17 @@ window.onload = function(){
       }
      }
 	}
-  };
-			   
-  var disappear = function(a, b) {
-	  window.puddle[b][a] = -1;
+  };		   
+  var disappear = function() {
+	 var playerX = player.x / 24;
+	 var playerY = player.y / 24;
+	 window.puddle[playerY][playerX] = -1;
   };
   var checkPuddle = function(){
-	   var playerX = player.x / 24;
-	 var playerY = player.y / 24;
 	 var positionPuddle = puddleMap.checkTile(player.x, player.y);
-	 
-	 if (positionPuddle === 6 && player.waterSupply > 0){
-		 player.waterSupply = player.waterSupply - 1;
-		 disappear((player.x / 24), (player.y / 24));
+	 if (positionPuddle === 6){
+		 disappear();
+		 player.waterSupply = 0;
 	 }
 	}; 
 var checkCity = function(){
