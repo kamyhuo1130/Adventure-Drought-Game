@@ -12,7 +12,7 @@ updateTime = function(){
 window.setInterval(updateTime, 1000);
 window.onload = function(){
   var game = new Game(300, 300);
-  game.spriteSheetWidth = 750;
+  game.spriteSheetWidth = 775;
   game.spriteSheetHeight = 24;
   game.fps = 15;
   game.spriteWidth = 24;
@@ -119,10 +119,12 @@ window.onload = function(){
 	  this.text = "Time: " + time;
 	  timerLabel.textAlign = "left";
 	  if (time <= 0){
-		  player.frame = 28;
+		  player.frame = 31;
+		  waterLevel.frame = 30;
 		  clearInterval(waterLevelLoss);
 		  confirm("Sorry, " + player.name + ". " + "You died!");
-		  player.frame = 28;
+		  player.frame = 31;
+		  waterLevel.frame = 30;
 		  game.stop();
 	  }
   };
