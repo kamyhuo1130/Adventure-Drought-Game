@@ -40,6 +40,7 @@ window.onload = function(){
     }
 	map.collisionData = collisionData;
 	
+	
   };
   var alertLabel = new Label("");
   var setAlertLabel = function(){
@@ -193,14 +194,15 @@ window.onload = function(){
   };
 			   
   var disappear = function(a, b) {
-	  puddle[a][b] = -1;
+	  window.puddle[b][a] = -1;
   };
-  
   var checkPuddle = function(){
 	 var positionPuddle = puddleMap.checkTile(player.x, player.y);
 	 if (positionPuddle === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
-		 disappear((player.x / 24), (player.y / 24));
+		  console.log(player.x / 24);
+		 console.log(player.y / 24);
+		 disappear((player.x * 24 || 825), (player.y * 24 || 32));
 	 }
 	 }; 
 var checkCity = function(){
@@ -210,7 +212,6 @@ var checkCity = function(){
 		game.stop();
 	}
 };
-
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
