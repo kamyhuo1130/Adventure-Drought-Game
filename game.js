@@ -86,7 +86,7 @@ window.onload = function(){
 	stage.addChild(alertLabel);
     game.rootScene.addChild(stage);
   };
-  confirm("Directions: The world is in a drought! Find your way out of the maze without running out of water. \nCollect water at the puddles before the timer runs out. The world depends on you. Good luck!");
+  confirm("THE ADVENTURE DROUGHT GAME \nDirections: The world is in a drought! Find your way out of the maze without running out of water. \nCollect water at the puddles before the timer runs out. The world depends on you. Good luck!");
   var name = prompt("What is your name?");
   var waterLevel = new Sprite(game.spriteWidth, game.spriteHeight);
   var setWaterLevel = function(){
