@@ -212,11 +212,6 @@ var checkCity = function(){
 		game.stop();
 	}
 };
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 053a38efc67e983e360fa5ca5827ba1dc9452656
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
