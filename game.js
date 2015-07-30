@@ -11,8 +11,20 @@ updateTime = function(){
 	timeSinceLastAlert = timeSinceLastAlert + 1;
 };
 setOpening = function(){
-	window.foregroundData[randomOpen][29] = -1;
+		window.foregroundData[randomOpen][29] = -1;
+		window.foregroundData[randomOpen][28] = -1;
+		window.foregroundData[randomOpen + 1][28] = -1;
+		window.foregroundData[randomOpen + 1][27] = -1;
 };
+setRandomMap = function(){
+	for(i = 0; i < 400; i++){
+	 var randomOpenX = Math.floor((Math.random()*19) + 2);
+	 var randomOpenY = Math.floor((Math.random()*27) + 2);
+	 if(window.puddle[randomOpenX][randomOpenY] !== 6 && window.foregroundData[randomOpenX - 1][randomOpenY -1] !== 1 && window.foregroundData[randomOpenX - 1][randomOpenY] !== 1 && window.foregroundData[randomOpenX][randomOpenY + 1] !== 1){
+       window.foregroundData[randomOpenX][randomOpenY] = 1;
+	  }
+     }
+ };
 window.setInterval(updateTime, 1000);
 window.onload = function(){
   var game = new Game(300, 300);
@@ -30,9 +42,10 @@ window.onload = function(){
     map.image = game.assets['sprites.png'];
     map.loadData(mapData);
     foregroundMap.image = game.assets['sprites.png'];
-    foregroundMap.loadData(foregroundData);
+    foregroundMap.loadData(foregroundData); 
 	puddleMap.loadData(puddle);
 	puddleMap.image = game.assets['sprites.png'];
+	setRandomMap();
 	setOpening();
     var collisionData = [];
 
@@ -244,7 +257,7 @@ var checkCity = function(){
       player.move();
 	  checkPuddle();
 	  waterLevel.move();
-	  alerting();
+	  //alerting();
 	  checkCity();
 	  label.move();
 	  timerLabel.move();
