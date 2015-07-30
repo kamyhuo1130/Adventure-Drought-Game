@@ -12,6 +12,18 @@ updateTime = function(){
 };
 setOpening = function(){
 	window.foregroundData[randomOpen][38] = -1;
+	window.foregroundData[randomOpen][37] = -1;
+	window.foregroundData[randomOpen + 1][37] = -1;
+	window.foregroundData[randomOpen + 1][36] = -1;
+};
+setRandomMap = function() {
+	for (var i = 0; i < 1200; i++) {
+		var randomOpenX = Math.floor((Math.random()*19) + 2);
+		var randomOpenY = Math.floor((Math.random()*36) + 2);
+	    if(window.puddle[randomOpenX][randomOpenY] !== 6 && window.foregroundData[randomOpenX - 1][randomOpenY -1] !== 1 && window.foregroundData[randomOpenX - 1][randomOpenY] !== 1 && window.foregroundData[randomOpenX][randomOpenY + 1] !== 1&& window.foregroundData[randomOpenX][randomOpenY -1] !== 6){
+			window.foregroundData[randomOpenX][randomOpenY] = 1;
+		}
+	}
 };
 window.setInterval(updateTime, 1000);
 window.onload = function(){
@@ -33,6 +45,7 @@ window.onload = function(){
     foregroundMap.loadData(foregroundData);
 	puddleMap.loadData(puddle);
 	puddleMap.image = game.assets['sprites.png'];
+	setRandomMap();
 	setOpening();
     var collisionData = [];
 
