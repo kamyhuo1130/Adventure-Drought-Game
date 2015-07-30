@@ -197,7 +197,7 @@ window.onload = function(){
 	  window.puddle[b][a] = -1;
   };
   var checkPuddle = function(){
-	 var playerX = player.x / 24;
+	   var playerX = player.x / 24;
 	 var playerY = player.y / 24;
 	 var positionPuddle = puddleMap.checkTile(player.x, player.y);
 	 if (positionPuddle === 6){
