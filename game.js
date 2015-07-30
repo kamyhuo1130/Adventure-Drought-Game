@@ -39,8 +39,6 @@ window.onload = function(){
       }
     }
 	map.collisionData = collisionData;
-	
-	
   };
   var alertLabel = new Label("");
   var setAlertLabel = function(){
