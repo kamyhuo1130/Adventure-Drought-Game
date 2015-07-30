@@ -120,6 +120,7 @@ window.onload = function(){
 	  timerLabel.textAlign = "left";
 	  if (time <= 0){
 		  player.frame = 28;
+		  clearInterval(waterLevelLoss);
 		  confirm("Sorry, " + player.name + ". " + "You died!");
 		  player.frame = 28;
 		  game.stop();
@@ -207,6 +208,7 @@ window.onload = function(){
 var checkCity = function(){
 	var position = puddleMap.checkTile(player.x, player.y);
 	if(position === 29){
+		clearInterval(waterLevelLoss);
 		confirm(name + ", You win! You have saved the world!");
 		game.stop();
 	}
