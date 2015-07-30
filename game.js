@@ -28,6 +28,7 @@ setRandomMap = function() {
 window.setInterval(updateTime, 1000);
 window.onload = function(){
   var game = new Game(300, 300);
+  game.keybind(32, 'a');
   game.spriteSheetWidth = 775;
   game.spriteSheetHeight = 24;
   game.fps = 15;
@@ -169,14 +170,15 @@ window.onload = function(){
     player.y = player.startingY * game.spriteHeight;
     player.direction = 0;
     player.walk = 0;
-    player.frame = player.spriteOffset + player.direction; 
+	player.broc = 0;
+    player.frame = player.spriteOffset + player.broc + player.direction; 
     player.image = new Surface(game.spriteSheetWidth, game.spriteSheetHeight);
     player.image.draw(game.assets['sprites.png']);
     player.name = name;
 	player.waterSupply = maxWaterLevel/2;
   };
   player.move = function(){
-    this.frame = this.spriteOffset + this.direction * 2 + this.walk;
+    this.frame = this.spriteOffset + this.broc + this.direction * 2 + this.walk;
     if (this.isMoving) {
       this.moveBy(this.xMovement, this.yMovement);
       if ((this.xMovement && this.x % 24 === 0) || (this.yMovement && this.y % 24 === 0)) {
@@ -245,6 +247,16 @@ var checkCity = function(){
 	var timer = 3;
 	timer.setInterval(game.timer, 1000);
   };
+  checkForChange = function(){
+	   if (game.input.a) {
+		  if(player.broc === 0){
+		  player.broc = 29;
+		  }
+		  else if (player.broc === 29){
+			  player.broc = 0;
+		  }
+	  }
+  };
   game.onload = function(){
     setMaps();
     setPlayer();
@@ -255,6 +267,7 @@ var checkCity = function(){
 	setAlertLabel();
     player.on('enterframe', function() {
       player.move();
+	  checkForChange();
 	  checkPuddle();
 	  waterLevel.move();
 	  alerting();
