@@ -3,7 +3,7 @@ var maxWaterLevel = 20;
 var time = 100;
 var timeSinceLastAlert = 0;
 var timeToNewAlert = 20;
-var alertArray = ["Africa's economy collapses!", "100m people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
+var alertArray = ["Africa's economy collapses!", "100k people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
 var i = 0;
 updateTime = function(){
 	time = time - 1;
@@ -201,8 +201,8 @@ window.onload = function(){
 	 if (positionPuddle === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
 		  console.log(player.x / 24);
-		 console.log(player.y / 24);
-		 disappear((player.x * 24 || 825), (player.y * 24 || 32));
+		 console.log(player.y / 24)
+		 disappear((player.x / 24), (player.y / 24));
 	 }
 	 }; 
 var checkCity = function(){
@@ -212,6 +212,11 @@ var checkCity = function(){
 		game.stop();
 	}
 };
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 053a38efc67e983e360fa5ca5827ba1dc9452656
   game.focusViewport = function(){
     var x = Math.min((game.width  - 24) / 2 - player.x, 0);
     var y = Math.min((game.height - 24) / 2 - player.y, 0);
