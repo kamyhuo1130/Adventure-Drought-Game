@@ -39,8 +39,6 @@ window.onload = function(){
       }
     }
 	map.collisionData = collisionData;
-	
-	
   };
   var alertLabel = new Label("");
   var setAlertLabel = function(){
@@ -75,7 +73,7 @@ window.onload = function(){
 		  game.stop();
 	  }
   };
-  var waterLevelLoss = window.setInterval(waterLoss,2000);
+  var waterLevelLoss = window.setInterval(waterLoss,1000);
   var setStage = function(){
     var stage = new Group();
     stage.addChild(map);
