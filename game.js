@@ -5,9 +5,13 @@ var timeSinceLastAlert = 0;
 var timeToNewAlert = 20;
 var alertArray = ["Africa's economy collapses!", "100k people dead!", "Water lines destroyed!", "China declares martial law!", "1 billion people have died!", "North America declares martial law!", "5 billion people have died!"];
 var i = 0;
+var randomOpen = Math.floor((Math.random()*20) + 1);
 updateTime = function(){
 	time = time - 1;
 	timeSinceLastAlert = timeSinceLastAlert + 1;
+};
+setOpening = function(){
+	window.foregroundData[randomOpen][29] = -1;
 };
 window.setInterval(updateTime, 1000);
 window.onload = function(){
@@ -29,6 +33,7 @@ window.onload = function(){
     foregroundMap.loadData(foregroundData);
 	puddleMap.loadData(puddle);
 	puddleMap.image = game.assets['sprites.png'];
+	setOpening();
     var collisionData = [];
 
     for(var i = 0; i< foregroundData.length; i++){
