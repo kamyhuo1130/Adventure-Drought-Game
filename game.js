@@ -200,11 +200,9 @@ window.onload = function(){
 	 var positionPuddle = puddleMap.checkTile(player.x, player.y);
 	 if (positionPuddle === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
-		  console.log(player.x / 24);
-		 console.log(player.y / 24)
 		 disappear((player.x / 24), (player.y / 24));
 	 }
-	 }; 
+	}; 
 var checkCity = function(){
 	var position = puddleMap.checkTile(player.x, player.y);
 	if(position === 29){
@@ -223,7 +221,7 @@ var checkCity = function(){
   game.timer = function(){
 	var timer = 3;
 	timer.setInterval(game.timer, 1000);
-  }
+  };
   game.onload = function(){
     setMaps();
     setPlayer();
