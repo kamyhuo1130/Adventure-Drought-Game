@@ -192,21 +192,20 @@ window.onload = function(){
 	}
   };
   var disappear = function(a, b) {
-	  puddle[a][b] = 0;
+	  puddle[a][b] = -1;
   };
   var checkPuddle = function(){
-	 var position = puddleMap.checkTile(player.x, player.y);
-	 if (position === 6 && player.waterSupply > 0){
+	 var positionPuddle = puddleMap.checkTile(player.x, player.y);
+	 if (positionPuddle === 6 && player.waterSupply > 0){
 		 player.waterSupply = player.waterSupply - 1;
-
-		disappear((player.x / 24 | 0), (player.y / 24 | 0));
-		 
-	}
+		 disappear((player.x / 24), (player.y / 24));
+	 }
+	
   }; 
 var checkCity = function(){
 	var position = puddleMap.checkTile(player.x, player.y);
 	if(position === 29){
-		confirm("You win!");
+		confirm(name + ", You win! You have saved the world!");
 		game.stop();
 	}
 };
