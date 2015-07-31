@@ -15,6 +15,7 @@ setOpening = function(){
 	window.foregroundData[randomOpen][37] = -1;
 	window.foregroundData[randomOpen + 1][37] = -1;
 	window.foregroundData[randomOpen + 1][36] = -1;
+	window.foregroundData[randomOpen -1][37] = -1;
 };
 setRandomMap = function() {
 	for (var i = 0; i < 1100; i++) {
